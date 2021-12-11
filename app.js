@@ -17,11 +17,22 @@ const App = {
         this.inputValue = ''
       }
     },
+    doubleCount() {
+      console.log('doubleCount')
+      return this.notes.length * 2
+    },
     toUpperCase(item) {
       return item.toUpperCase()
     },
     removeNote(idx, event) {
       this.notes.splice(idx, 1)
+    }
+  },
+  computed: {
+    /*Этот метод будет вызван в том случае, если будет изменена переменная this.notes*/
+    doubleCountComputed() {
+      console.log('doubleCountComputed')
+      return this.notes.length * 2
     }
   }
 }
