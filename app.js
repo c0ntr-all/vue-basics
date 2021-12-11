@@ -17,10 +17,6 @@ const App = {
         this.inputValue = ''
       }
     },
-    doubleCount() {
-      console.log('doubleCount')
-      return this.notes.length * 2
-    },
     toUpperCase(item) {
       return item.toUpperCase()
     },
@@ -33,6 +29,15 @@ const App = {
     doubleCountComputed() {
       console.log('doubleCountComputed')
       return this.notes.length * 2
+    }
+  },
+  /*Отслеживание изменений переменных*/
+  watch: {
+    /*Название метода должно совпадать с названием отслеживаемой переменной*/
+    inputValue(value) {
+      if(value.length > 10) {
+        this.inputValue = ''
+      }
     }
   }
 }
