@@ -12,13 +12,13 @@
         <h1>{{ title }}</h1>
         <div class="form-control">
           <input
-                  type="text"
-                  v-bind:placeholder="placeholderString"
-                  v-bind:value="inputValue"
-                  v-on:input="inputChangehandler"
+            type="text"
+            v-bind:placeholder="placeholderString"
+            v-bind:value="inputValue"
+            v-on:input="inputChangeHandler"
           >
         </div>
-        <button class="btn">Добавить</button>
+        <button class="btn" v-on:click="addNewNote">Добавить</button>
         <hr>
         <ul class="list">
           <li class="list-item" v-for="note in notes">
