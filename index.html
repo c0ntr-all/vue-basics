@@ -22,8 +22,9 @@
         <button class="btn" v-on:click="addNewNote">Добавить</button>
         <hr>
         <ul class="list">
-          <li class="list-item" v-for="note in notes">
-            {{ note }}
+          <li class="list-item" v-for="(note, idx) in notes">
+            ({{ idx + 1}}) {{ note }}
+              <button class="btn danger" v-on:click="removeNote(idx, $event)">Удалить</button>
           </li>
         </ul>
       </div>
