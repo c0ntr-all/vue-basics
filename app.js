@@ -1,42 +1,30 @@
-const App = {
-  data() {
-    return {
-      placeholderString: 'Введите название заметки',
-      title: 'Список заметок',
-      inputValue: '',
-      notes: ['Заметка 1', 'Заметка 2']
-    }
-  },
+Vue.createApp({
+  data: () => ({
+    myHtml: '<h1>Vue 3 App</h1>',
+    title: 'Я есть Грут',
+    person: {
+      firstName: 'Vladilen',
+      lastName: 'Minin',
+      age: 27
+    },
+    items: [1, 2, 3, 4, 5, 6]
+  }),
   methods: {
-    addNewNote() {
-      if(this.inputValue !== '') {
-        this.notes.push(this.inputValue)
-        this.inputValue = ''
-      }
+    addItem(event) {
+      this.items.unshift(this.$refs.myInput.value)
+      this.$refs.myInput.value = ''
+      console.log(event.key)
     },
-    toUpperCase(item) {
-      return item.toUpperCase()
+    remove(i) {
+      this.items.splice(i, 1)
     },
-    removeNote(idx, event) {
-      this.notes.splice(idx, 1)
+    log(item) {
+      console.log('Log item: ', item)
     }
   },
   computed: {
-    /*Этот метод будет вызван в том случае, если будет изменена переменная this.notes*/
-    doubleCountComputed() {
-      console.log('doubleCountComputed')
-      return this.notes.length * 2
-    }
-  },
-  /*Отслеживание изменений переменных*/
-  watch: {
-    /*Название метода должно совпадать с названием отслеживаемой переменной*/
-    inputValue(value) {
-      if(value.length > 10) {
-        this.inputValue = ''
-      }
+    evenItems() {
+      return this.items.filter(i => i % 2 === 0)
     }
   }
-}
-
-Vue.createApp(App).mount('#app')
+}).mount('#app')
