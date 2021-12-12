@@ -29,12 +29,16 @@
 <!--            @click="title = 'Теперь я другое название'"-->
 <!--    >Изменить название</button>-->
     <ul class="list" v-if="items.length">
+<!--      :key - для привязки элемента т.к. текст в инпуте переносится на другой элемент при удалении-->
       <li
           class="list-item"
           v-for="(item, i) in items"
           @click="items.splice(i, 1)"
+          :key="item"
       >
-        <strong>{{ item }}</strong>
+        <strong>{{ item }}</strong>&nbsp;
+<!--        stopPropagation для отмены события на input-->
+        <input type="text" @click.stop>
       </li>
 <!--      <li class="list-item" v-for="(value, key) in person">-->
 <!--        <strong>{{ key }}</strong> {{ value }}-->
