@@ -28,10 +28,38 @@ const app = Vue.createApp({
         onClick: this.changeTitle
       }, 'Изменить')
     ])
+  },
+  beforeCreate() {
+    console.log('beforeCreate')
+  },
+  created() {
+    console.log('created')
+  },
+  beforeMount() {
+    console.log('beforeMount')
+  },
+  mounted() {
+    console.log('mounted')
+  },
+  beforeUnmount() {
+    console.log('beforeUnmounted')
+  },
+  mounted() {
+    console.log('mounted')
+  },
+  beforeUpdate() {
+    console.log('beforeUpdate')
+  },
+  updated() {
+    console.log('updated')
   }
 })
 
 app.mount('#app')
+
+// setTimeout(() => {
+//   app.unmount()
+// }, 2000)
 
 // ======
 
@@ -64,4 +92,4 @@ const proxy = new Proxy(data, {
 
 proxy.title = 'Angular 10'
 
-console.log(proxy)
+// console.log(proxy)
