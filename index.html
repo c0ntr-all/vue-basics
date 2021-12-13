@@ -3,53 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Counter</title>
+  <title>Как работает Vue</title>
   <link rel="stylesheet" href="theme.css" />
-  <style>
-    [v-cloak] {
-        display: none;
-    }
-  </style>
 </head>
 <body>
-<!--v-cloak - с помощью стилей скрывает приложение до тех пор, пока оно не прогрузится-->
-<div class="container pt-5" id="app" v-cloak>
-  <div class="card center">
-<!--    Интерпретировать html внутри переменной-->
-    <div v-html="myHtml"></div>
-<!--    Аналог интерполяции-->
-<!--    <h2 v-text="title"></h2>-->
-<!--&lt;!&ndash;    Выводит один раз и не зависит от изменений в модели&ndash;&gt;-->
-<!--    <h2 v-once>{{ title }}</h2>-->
-<!--&lt;!&ndash;    Все, что внутри тега не интерпретируется&ndash;&gt;-->
-<!--    <h2 v-pre>{{ title }}</h2>-->
+<div class="container pt-5" id="app"></div>
 
-<!--    <button-->
-<!--            class="btn"-->
-<!--            @click="title = 'Теперь я другое название'"-->
-<!--    >Изменить название</button>-->
-    <div class="form-control">
-      <input type="text" @keyup.shift.enter.exact="addItem($event)" ref="myInput">
-    </div>
-    <ul class="list" v-if="items.length">
-<!--      :key - для привязки элемента т.к. текст в инпуте переносится на другой элемент при удалении-->
-      <li
-          class="list-item"
-          v-for="(item, i) in items"
-          @click.right.prevent="remove(i), log(item)"
-          :key="item"
-      >
-        <strong>{{ item }}</strong>&nbsp;
-<!--        stopPropagation для отмены события на input-->
-        <input type="text" @click.stop>
-      </li>
-<!--      <li class="list-item" v-for="(value, key) in person">-->
-<!--        <strong>{{ key }}</strong> {{ value }}-->
-<!--      </li>-->
-    </ul>
-<!--    v-show - показывает элемент при соблюдении условий (display)-->
-    <h3 v-show="items.length === 0">Элементов нет</h3>
-  </div>
+<div class="card" id="app2">
+  <h1>{{ title }}</h1>
 </div>
 
 <script src="https://unpkg.com/vue@next"></script>
