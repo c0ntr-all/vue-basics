@@ -1,4 +1,4 @@
-# vue-vladilen.loc
+# vue-basics
 
 ## Project setup
 ```
