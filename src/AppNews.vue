@@ -1,8 +1,10 @@
 <template>
   <div class="card">
     <h3>{{ title }}</h3>
-    <button class="btn" @click="isOpen = !isOpen">Открыть</button>
-    <p v-if="isOpen">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, tempora.</p>
+    <button class="btn" @click="open">
+      {{ isNewsOpen ? 'Закрыть' : 'Открыть'}}
+    </button>
+    <p v-if="isNewsOpen">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, tempora.</p>
   </div>
 </template>
 
@@ -29,7 +31,15 @@ export default {
   },
   data() {
     return {
-      // isOpen: false
+      isNewsOpen: this.isOpen
+    }
+  },
+  methods: {
+    open() {
+      this.isNewsOpen = !this.isNewsOpen //Это плохая практика т.к. данные должны передаваться в одностороннем порядке
+      if(this.isNewsOpen) {
+        this.$emit('open-news', 42, 24)
+      }
     }
   }
 }
