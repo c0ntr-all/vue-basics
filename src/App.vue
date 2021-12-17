@@ -4,8 +4,11 @@
       <h2>Актуальные новости {{ now }}</h2>
     </div>
 
-    <app-news></app-news>
-    <app-news></app-news>
+    <app-news
+        v-for="item in news"
+        :key="item"
+        :title="item"
+    ></app-news>
   </div>
 </template>
 
@@ -15,10 +18,9 @@ export default {
   data() {
     return {
       now: new Date().toLocaleDateString(),
-      isOpen: false,
       news: [
-          'Джо Байден победил на выборах в США',
-          'Vue 3 успешно работает'
+        'Джо Байден победил на выборах в США',
+        'Vue 3 успешно работает'
       ]
     }
   },
