@@ -29,6 +29,18 @@ export default {
       }
     }
   },
+  // emits: ['open-news'], //Список эмитов для понимания. Особой роли этот элемент не играет
+  emits: {
+    //Валидация эмитов
+    'open-news'(num) {
+      if(num) {
+        return true
+      }
+      console.warn('no data in open-news emit')
+      return false
+    },
+    // 'open-news': null //Нет валидации
+  },
   data() {
     return {
       isNewsOpen: this.isOpen
@@ -38,7 +50,7 @@ export default {
     open() {
       this.isNewsOpen = !this.isNewsOpen //Это плохая практика т.к. данные должны передаваться в одностороннем порядке
       if(this.isNewsOpen) {
-        this.$emit('open-news', 42, 24)
+        this.$emit('open-news', 42)
       }
     }
   }
