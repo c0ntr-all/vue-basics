@@ -1,7 +1,7 @@
 <template>
   <div>
     <button class="btn" :class="color" @click="$emit('action')">
-      {{ text }}
+      <slot />
     </button>
   </div>
 </template>
@@ -10,10 +10,6 @@
   export default {
     emits: ['action'],
     props: {
-      text: {
-        type: String,
-        required: true
-      },
       color: {
         type: String,
         default: '',
