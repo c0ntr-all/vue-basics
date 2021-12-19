@@ -17,12 +17,15 @@
           color="primary"
           @action="mark"
       >Прочесть новость</app-button>
+
+      <app-news-list></app-news-list>
     </div>
   </div>
 </template>
 
 <script>
 import AppButton from './AppButton'
+import AppNewsList from './AppNewsList'
 export default {
   // props: ['title'],
   props: {
@@ -84,6 +87,6 @@ export default {
     //   this.$emit('unmark', this.id)
     // }
   },
-  components: {AppButton}
+  components: {AppButton, AppNewsList}
 }
 </script>
