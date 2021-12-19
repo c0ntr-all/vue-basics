@@ -1,21 +1,28 @@
 <template>
   <div class="card">
     <h3>{{ title }}</h3>
-    <button class="btn" @click="open">
-      {{ isNewsOpen ? 'Закрыть' : 'Открыть'}}
-    </button>
+    <app-button @action="open" :text="isNewsOpen ? 'Закрыть' : 'Открыть'"></app-button>
+    <app-button
+        text="Отметить непрочитанной"
+        color="danger"
+        v-if="wasRead"
+        @action="$emit('unmark', id)"
+    ></app-button>
     <div v-if="isNewsOpen">
       <hr>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, tempora.</p>
-      <button v-if="!wasRead" class="btn primary" @click="mark">Прочесть новость</button>
-      <button class="btn danger" v-if="wasRead" @click="$emit('unmark', id)">
-        Отметить непрочитанной
-      </button>
+      <app-button
+          v-if="!wasRead"
+          color="primary"
+          @action="mark"
+          text="Прочесть новость"
+      ></app-button>
     </div>
   </div>
 </template>
 
 <script>
+import AppButton from './AppButton'
 export default {
   // props: ['title'],
   props: {
@@ -76,6 +83,7 @@ export default {
     // unmark() {
     //   this.$emit('unmark', this.id)
     // }
-  }
+  },
+  components: {AppButton}
 }
 </script>
