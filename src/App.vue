@@ -4,6 +4,7 @@
       <h2>Динамические и асинхронные компоненты</h2>
 
       <app-buton
+          ref="myBtn"
           :color="oneColor"
           @action="active = 'one'"
       >One</app-buton>
@@ -30,9 +31,11 @@ export default {
     }
   },
   mounted() {
-    setTimeout(() => {
-      this.componentName = 'new comp name'
-    }, 1500)
+    // setTimeout(() => {
+    //   this.componentName = 'new comp name'
+    // }, 1500)
+
+    this.$refs.myBtn.btnLog()
   },
   computed: {
     // componentName() {

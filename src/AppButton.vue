@@ -17,6 +17,11 @@
           return ['', 'primary', 'danger'].includes(value) //includes возвращает boolean
         }
       }
+    },
+    methods: {
+      btnLog() {
+        console.log('Button log')
+      }
     }
   }
 </script>
