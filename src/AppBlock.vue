@@ -3,7 +3,7 @@
     <slot name="header"></slot>
     <!-- Дефолтное значение, если ничего не передается из основного компонента. name указывать необязательно -->
     <slot name="default">No text</slot>
-    <div v-id="$slots.footer">
+    <div v-if="$slots.footer">
       <slot name="footer"></slot>
     </div>
   </div>

@@ -4,6 +4,15 @@
       <h2>Slots</h2>
     </div>
 
+    <app-list>
+      <template #default="{ idx, iter }">
+        <span style="color: #c25205">
+          <strong>{{ idx + 1 }}</strong>
+          Item: {{ iter }}
+        </span>
+      </template>
+    </app-list>
+
     <app-block>
       <p>Это самый важный текст для нового блока</p>
       <!-- # - сокращенное выражение slot-->
@@ -21,8 +30,9 @@
 
 <script>
 import AppBlock from './AppBlock'
+import AppList from './AppList'
 export default {
-  components: {AppBlock}
+  components: {AppBlock, AppList}
 }
 </script>
 
