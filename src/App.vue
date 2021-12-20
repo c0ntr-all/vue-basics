@@ -1,40 +1,36 @@
 <template>
   <div class="container pt-1">
     <div class="card">
-      <h2>Slots</h2>
+      <h2>Динамические и асинхронные компоненты</h2>
+
+      <app-buton
+          :color="active === 'one' ? 'primary' : ''"
+          @action="active = 'one'"
+      >One</app-buton>
+      <app-buton
+          :color="active === 'two' ? 'primary' : ''"
+          @action="active = 'two'"
+      >Two</app-buton>
     </div>
-
-    <app-list>
-      <template #default="{ idx, iter }">
-        <span style="color: #c25205">
-          <strong>{{ idx + 1 }}</strong>
-          Item: {{ iter }}
-        </span>
-      </template>
-    </app-list>
-
-    <app-block>
-      <p>Это самый важный текст для нового блока</p>
-      <!-- # - сокращенное выражение slot-->
-      <template #header>
-        <h3>Это заголовок!</h3>
-      </template>
-
-      <template v-slot:footer>
-        <hr>
-        <small>Это footer</small>
-      </template>
-    </app-block>
+    <app-text-one v-if="active === 'one'"></app-text-one>
+    <app-text-two v-else-if="active === 'two'"></app-text-two>
   </div>
 </template>
 
 <script>
-import AppBlock from './AppBlock'
-import AppList from './AppList'
+import AppButon from './AppButton'
+import AppTextOne from './AppTextOne'
+import AppTextTwo from './AppTextTwo'
 export default {
-  components: {AppBlock, AppList}
+  data() {
+    return {
+      active: 'one' //two
+    }
+  },
+  components: {AppButon, AppTextOne, AppTextTwo}
 }
 </script>
 
 <style scoped>
+
 </style>
