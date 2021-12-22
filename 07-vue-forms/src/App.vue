@@ -24,11 +24,11 @@
 
       <div class="form-control">
         <label for="city">Твой город</label>
-        <select id="city">
+        <select id="city" v-model="city">
           <option value="spb">Санкт-Петербург</option>
           <option value="msk">Москва</option>
           <option value="kzn">Казань</option>
-          <option selected value="nsk">Новосибирск</option>
+          <option value="nsk">Новосибирск</option>
         </select>
       </div>
 
@@ -66,7 +66,8 @@
     data() {
       return {
         name: '',
-        age: 23
+        age: 23,
+        city: 'spb'
       }
     },
     methods: {
@@ -77,7 +78,7 @@
         // Можно получать данные из инпута с помощью ref, но лучше использовать v-model для расширенных возможностей
         // console.log('Nam Ref', this.$refs.nameInput.value)
         console.log('Age', this.age)
-        console.log('Age', typeof this.age)
+        console.log('City', this.city)
         console.groupEnd()
       }
     }
