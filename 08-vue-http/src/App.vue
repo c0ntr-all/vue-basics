@@ -29,6 +29,9 @@ export default {
       people: []
     }
   },
+  mounted() {
+    this.loadPeople()
+  },
   methods: {
     async createPerson() {
       const response = await fetch('https://vue-with-http-afa88-default-rtdb.europe-west1.firebasedatabase.app/people.json', {
@@ -42,6 +45,11 @@ export default {
       })
 
       const fireBaseData = await response.json()
+      this.people.push({
+        firstName: this.name,
+        id: fireBaseData.name
+      })
+
       this.name = ''
     },
     async loadPeople() {
