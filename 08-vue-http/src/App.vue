@@ -10,14 +10,21 @@
 
       <button class="btn primary" :disabled="name.length === 0">Создать человека</button>
     </form>
+
+    <app-people-list
+        :people="people"
+        @load="loadPeople"
+    ></app-people-list>
   </div>
 </template>
 
 <script>
+import AppPeopleList from './AppPeopleList'
 export default {
   data() {
     return {
-      name: ''
+      name: '',
+      people: []
     }
   },
   methods: {
@@ -37,7 +44,8 @@ export default {
       console.log(fireBaseData)
       this.name = ''
     }
-  }
+  },
+  components: {AppPeopleList}
 }
 </script>
 
