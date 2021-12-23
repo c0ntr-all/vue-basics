@@ -20,6 +20,8 @@
 
 <script>
 import AppPeopleList from './AppPeopleList'
+import axios from 'axios'
+
 export default {
   data() {
     return {
@@ -40,9 +42,16 @@ export default {
       })
 
       const fireBaseData = await response.json()
-
-      console.log(fireBaseData)
       this.name = ''
+    },
+    async loadPeople() {
+      const {data} = await axios.get('https://vue-with-http-afa88-default-rtdb.europe-west1.firebasedatabase.app/people.json')
+      this.people = Object.keys(data).map(key => {
+        return {
+          id: key,
+          ...data[key]
+        }
+      })
     }
   },
   components: {AppPeopleList}
