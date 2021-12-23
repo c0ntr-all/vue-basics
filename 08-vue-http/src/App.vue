@@ -14,6 +14,7 @@
     <app-people-list
         :people="people"
         @load="loadPeople"
+        @remove="removePerson"
     ></app-people-list>
   </div>
 </template>
@@ -60,6 +61,10 @@ export default {
           ...data[key]
         }
       })
+    },
+    async removePerson(id) {
+      await axios.delete(`https://vue-with-http-afa88-default-rtdb.europe-west1.firebasedatabase.app/people/${id}.json`)
+      this.people = this.people.filter(person => person.id !== id)
     }
   },
   components: {AppPeopleList}
