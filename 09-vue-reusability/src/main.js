@@ -2,9 +2,12 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import './theme.css'
 
-/*Такой вариант использования миксина нежелателен т.к. это создаст проблемы для масштабирования проекта*/
-//import alertMixin from './alertMixin'
-
 createApp(App)
-  //.mixin(alertMixin)
+  // В дальнейшем эта директива будет доступна как v-focus
+  // Как и миксины, лучше делать локально
+  // .directive('focus', {
+  //   mounted(el) {
+  //     el.focus()
+  //   }
+  // })
   .mount('#app')
