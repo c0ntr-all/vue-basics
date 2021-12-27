@@ -1,30 +1,31 @@
 <template>
   <div class="container">
     <div class="card">
-      <h2>Разговор про директивы</h2>
+      <h2 v-color="myColor">Разговор про директивы</h2>
 
       <div class="form-control">
         <label for="inp">Активный по умолчанию</label>
         <input v-focus type="text" id="inp">
       </div>
+
+      <button class="btn" @click="myColor = 'darkblue'">Сделать синим</button>
     </div>
   </div>
 </template>
 
 <script>
 import focusDirective from './focusDirective'
+import colorDirective from './colorDirective'
 
 export default {
-  //Директивы также можно записать в компоненте, а можно вывести в файл
-  // directives: {
-  //   focus: {
-  //     mounted(el) {
-  //       el.focus()
-  //     }
-  //   }
-  // }
+  data() {
+    return {
+      myColor: 'darkred'
+    }
+  },
   directives: {
-    focus: focusDirective
+    focus: focusDirective,
+    color: colorDirective
   }
 }
 </script>
