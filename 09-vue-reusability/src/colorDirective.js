@@ -3,14 +3,11 @@ export default {
     console.log(el)
     console.log(binding)
 
-    el.style.color = binding.value
+    el.style[binding.arg] = binding.value
   },
 
   updated(el, binding) {
-    console.log(el)
-    console.log(binding)
-
-    el.style.color = binding.value
+    el.style[binding.arg] = binding.value
   },
 
   unmounted() {}

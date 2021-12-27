@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="card">
-      <h2 v-color="myColor">Разговор про директивы</h2>
+      <h2 v-color:[type]="myColor">Разговор про директивы</h2>
 
       <div class="form-control">
         <label for="inp">Активный по умолчанию</label>
@@ -9,6 +9,7 @@
       </div>
 
       <button class="btn" @click="myColor = 'darkblue'">Сделать синим</button>
+      <button class="btn" @click="type = type === 'color' ? 'backgroundColor' : 'color'">Переключить тип</button>
     </div>
   </div>
 </template>
@@ -20,7 +21,8 @@ import colorDirective from './colorDirective'
 export default {
   data() {
     return {
-      myColor: 'darkred'
+      myColor: 'darkred',
+      type: 'color'
     }
   },
   directives: {
