@@ -32,10 +32,13 @@ export default {
       return this.email !== '' && this.password !== ''
     }
   },
+  inject: ['login'],
   methods: {
     submit() {
       if (this.isValid) {
-        // login
+        //this.$router.push('/dashboard') // Сохраняет историю
+        //this.$router.replace('/dashboard') // Не сохраняет историю
+        this.login()
       }
     }
   }
