@@ -10,7 +10,8 @@ export default createRouter({
     { path: '/login' , component: Login, alias: '/'},
     { path: '/forget', component: Forget},
     { path: '/dashboard', component: Dashboard},
-    { path: '/mail', component: Mail}
+    //Параметры через : можно считывать в компоненте. Этот параметр считается обязательным, с ? - необзятельный
+    { path: '/mail/:mailId?', component: Mail}
   ],
   linkActiveClass: 'active',
   linkExactActiveClass: 'active'
