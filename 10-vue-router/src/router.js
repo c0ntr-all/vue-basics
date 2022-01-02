@@ -3,6 +3,7 @@ import Login from './views/Login'
 import Forget from './views/Forget'
 import Dashboard from './views/Dashboard'
 import Mail from './views/Mail'
+import NotFound from './views/NotFound'
 import AppEmailBody from './components/AppEmailBody'
 
 export default createRouter({
@@ -14,6 +15,7 @@ export default createRouter({
     { path: '/mail', component: Mail, children: [
         { path: ':mailId?', component: AppEmailBody, props: true }
     ]},
+    { path: '/:notFound(.*)', component: NotFound}
   ],
   linkActiveClass: 'active',
   linkExactActiveClass: 'active'
