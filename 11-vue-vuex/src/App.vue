@@ -4,7 +4,7 @@
     <div class="card">
       <h1>Про Vuex</h1>
       <h2>Счетчик {{ $store.state.counter }}</h2>
-      <button class="btn" @click="increment">Добавить</button>
+      <button class="btn primary" @click="increment">Добавить</button>
     </div>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
   // },
   methods: {
     increment() {
-      this.$store.state.counter++
+      this.$store.commit('increment')
     }
   },
   components: {TheNavbar}
