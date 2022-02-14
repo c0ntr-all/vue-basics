@@ -2,12 +2,12 @@
   <header class="navbar">
     <strong>Счетчик {{ counter }}</strong>
 
-    <button class="btn" @click="addFive">Добавить 5</button>
+    <button class="btn" @click="add">Добавить 5</button>
   </header>
 </template>
 
 <script>
-import {mapGetters, mapMutations} from "vuex";
+import {mapGetters, mapMutations} from "vuex"
 
 export default {
     computed: {
@@ -20,10 +20,12 @@ export default {
     methods: {
       //Поскольку мутации - это методы, то мы можем через map вывести все мутации как методы здесь
       //Отсюда доступен метода add из мутаций в кнтексте this
-      ...mapMutations(['add']),
-      addFive() {
-        this.add({value: 5})
-
+      ...mapMutations({
+        addFive: 'add'
+      }),
+      add() {
+        this.addFive({value: 5})
+      // this.add({value: 5})
       //   this.$store.commit('add', {
       //     value: 5
       //   })
