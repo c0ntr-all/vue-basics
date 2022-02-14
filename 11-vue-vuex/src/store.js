@@ -6,6 +6,7 @@ export default createStore({
       counter: 1
     }
   },
+  //Мутации должны быть полностью синхронны
   mutations: {
     //state - это стэйт из кода выше
     increment(state) {
@@ -14,6 +15,13 @@ export default createStore({
     //payload - данные, которые можно передать из компонента
     add(state, payload) {
       state.counter += payload.value
+    }
+  },
+  actions: {
+    incrementAsync(context, payload) {
+      setTimeout(() => {
+        context.commit('add', payload)
+      }, payload.delay)
     }
   },
   //Через геттеры можно манипулировать отображением данных не трогая стэйт, например добавить восклицательный знак

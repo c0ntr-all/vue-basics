@@ -4,7 +4,8 @@
     <div class="card">
       <h1>Про Vuex</h1>
       <h2>Счетчик {{ $store.getters.counter }} ({{ $store.getters.doubleCounter}})</h2>
-      <button class="btn primary" @click="increment">Добавить</button>
+      <button class="btn primary" @click="add">Добавить</button>
+      <button class="btn dagner" @click="incrementAsync">Добавить 10</button>
     </div>
   </div>
 </template>
@@ -18,8 +19,14 @@ export default {
   //   }
   // },
   methods: {
-    increment() {
+    add() {
       this.$store.commit('increment')
+    },
+    incrementAsync() {
+      this.$store.dispatch('incrementAsync', {
+        value: 10,
+        delay: 200
+      })
     }
   },
   components: {TheNavbar}
