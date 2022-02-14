@@ -18,9 +18,11 @@ export default createStore({
     }
   },
   actions: {
-    incrementAsync(context, payload) {
+    //context содержит весь набор методов: commit, dispatch, getters и т.д. Здесь можно получить доступ ко всей информации
+    //в store
+    incrementAsync({ commit }, payload) {
       setTimeout(() => {
-        context.commit('add', payload)
+        commit('add', payload)
       }, payload.delay)
     }
   },
