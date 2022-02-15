@@ -35,10 +35,10 @@ export default {
     },
     //Первым прааметром принимается state, вторым getters. Если state не используется то можно ставить _.
     doubleCounter(state, getters, rootState, rootGetters) {
-      console.log('state', state)
-      console.log('getters', getters)
-      console.log('rootState', rootState)
-      console.log('rootGetters', rootGetters)
+      // console.log('state', state)
+      // console.log('getters', getters)
+      // console.log('rootState', rootState)
+      // console.log('rootGetters', rootGetters)
       return getters.counter * 2
     }
   }
