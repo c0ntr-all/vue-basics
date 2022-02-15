@@ -11,17 +11,18 @@ import {mapGetters, mapMutations} from "vuex"
 
 export default {
     computed: {
-      // counter() {
-      //   return this.$store.getters.counter
-      // },
+      counter() {
+        //Получение counter старым способом
+        return this.$store.getters['count/counter']
+      },
       //Такой подход заменяет конструкцию выше. Мы сразу забираем из vuex все, что касается counter
-      ...mapGetters(['counter'])
+      // ...mapGetters('count', ['counter'])
     },
     methods: {
       //Поскольку мутации - это методы, то мы можем через map вывести все мутации как методы здесь
       //Отсюда доступен метода add из мутаций в кнтексте this
       ...mapMutations({
-        addFive: 'add'
+        addFive: 'count/add'
       }),
       add() {
         this.addFive({value: 5})

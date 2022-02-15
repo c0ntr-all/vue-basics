@@ -14,19 +14,14 @@
 import {mapGetters, mapMutations, mapActions} from "vuex"
 import TheNavbar from './TheNavbar'
 export default {
-  // data() {
-  //   return {
-  //     counter: 0
-  //   }
-  // },
-  //computed возвращает объект, mapGetters тоже поэтому можно без spread-оператора
-  //Если появятся другие computed свойства то можно будет написать {...mapGetters()}
-  computed: mapGetters(['counter', 'doubleCounter', 'uppercaseTitle']),
+  //Переделываем мапперы под нэймспейм модулей
+  computed: {
+    ...mapGetters(['uppercaseTitle']),
+    ...mapGetters('count', ['counter', 'doubleCounter']),
+  },
   methods: {
-    ...mapMutations({
-      'add': 'increment'
-    }),
-    ...mapActions(['incrementAsync']),
+    ...mapMutations({add: 'count/increment'}),
+    ...mapActions('count', ['incrementAsync']),
   },
   components: {TheNavbar}
 }

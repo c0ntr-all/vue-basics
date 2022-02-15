@@ -1,4 +1,5 @@
 export default {
+  namespaced: true,
   state() {
     return {
       counter: 1
@@ -33,7 +34,11 @@ export default {
       return state.counter
     },
     //Первым прааметром принимается state, вторым getters. Если state не используется то можно ставить _.
-    doubleCounter(_, getters) {
+    doubleCounter(state, getters, rootState, rootGetters) {
+      console.log('state', state)
+      console.log('getters', getters)
+      console.log('rootState', rootState)
+      console.log('rootGetters', rootGetters)
       return getters.counter * 2
     }
   }
