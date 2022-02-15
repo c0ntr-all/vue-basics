@@ -2,7 +2,7 @@
   <the-navbar></the-navbar>
   <div class="container with-nav">
     <div class="card">
-      <h1>Про Vuex</h1>
+      <h1>{{ uppercaseTitle }}</h1>
       <h2>Счетчик {{ counter }} ({{ doubleCounter }})</h2>
       <button class="btn primary" @click="add">Добавить</button>
       <button class="btn dagner" @click="incrementAsync({value: 10,delay: 200})">Добавить 10</button>
@@ -21,7 +21,7 @@ export default {
   // },
   //computed возвращает объект, mapGetters тоже поэтому можно без spread-оператора
   //Если появятся другие computed свойства то можно будет написать {...mapGetters()}
-  computed: mapGetters(['counter', 'doubleCounter']),
+  computed: mapGetters(['counter', 'doubleCounter', 'uppercaseTitle']),
   methods: {
     ...mapMutations({
       'add': 'increment'
