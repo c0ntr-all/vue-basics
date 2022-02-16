@@ -13,13 +13,16 @@
 </template>
 
 <script>
-import {ref, reactive, toRefs} from 'vue'
+import {ref, reactive, toRefs, isRef, isReactive} from 'vue'
 
 export default {
   //Setup объединяет в себе data(), methods, watch
   setup() {
-    // const name = ref('VueJS')
-    // const version = ref(3)
+    const name = ref('VueJS')
+    const version = ref(3)
+
+    console.log(isRef(name)) //true
+    console.log(isRef(version.value)) //false
 
     //Если в ref Работаем с объектом, то в последующих операциях используем его целиком дабы сохранить реактивность
     const framework = reactive({
@@ -27,16 +30,19 @@ export default {
       version: 3
     })
 
+    console.log(isReactive(framework))
+    console.log(isReactive(framework.name))
+
     function changeInfo() {
       //Для reactive value не нужен
-      framework.name = 'Vue JS !'
-      framework.version = 42
+      name.value = 'Vue JS !',
+      version.value = 42
     }
 
     //В setup всегда возвращается объект
     return {
-      ...toRefs(framework),
-      framework: framework,
+      name: name,
+      version: version,
       change: changeInfo
     }
   },
