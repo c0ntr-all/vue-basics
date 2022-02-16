@@ -4,8 +4,8 @@
       <h1>Vue Composition Api</h1>
       <small>data, methods, computed, watch</small>
       <hr>
-      <p>Название: <strong>{{ framework.name }}</strong></p>
-      <p>Версия: <strong>{{ framework.version }}</strong></p>
+      <p>Название: <strong>{{ name }}</strong></p>
+      <p>Версия: <strong>{{ version }}</strong></p>
 
       <button class="btn" @click="change">Изменить</button>
     </div>
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import {ref} from 'vue'
+import {ref, reactive, toRefs} from 'vue'
 
 export default {
   //Setup объединяет в себе data(), methods, watch
@@ -22,24 +22,20 @@ export default {
     // const version = ref(3)
 
     //Если в ref Работаем с объектом, то в последующих операциях используем его целиком дабы сохранить реактивность
-    const framework = ref({
+    const framework = reactive({
       name: 'VueJS',
       version: 3
     })
 
     function changeInfo() {
-      //Создаваемые переменные в setup -это объекты, значения которых хранятся в свойстве value, но в интерполяции
-      //Composition API автоматически подставит value, поэтому можно его не указывать
-      // name.value = 'Vue JS !'
-      // version.value = 42
-      framework.value.name = 'Vue JS !'
-      framework.value.version = 42
+      //Для reactive value не нужен
+      framework.name = 'Vue JS !'
+      framework.version = 42
     }
 
     //В setup всегда возвращается объект
     return {
-      name: framework.value.name,
-      version: framework.value.version,
+      ...toRefs(framework),
       framework: framework,
       change: changeInfo
     }
