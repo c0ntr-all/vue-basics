@@ -13,7 +13,15 @@
 </template>
 
 <script>
-import {ref, reactive, toRefs, isRef, isReactive, computed} from 'vue'
+import {
+  ref,
+  reactive,
+  toRefs,
+  isRef,
+  isReactive,
+  computed,
+  watch
+} from 'vue'
 
 export default {
   //Setup объединяет в себе data(), methods, watch
@@ -32,10 +40,17 @@ export default {
 
     const doubleVersion = computed(() => version.value * 2)
 
-    console.log(isRef(doubleVersion))
+    // console.log(isRef(doubleVersion))
 
-    console.log(isReactive(framework))
-    console.log(isReactive(framework.name))
+    // console.log(isReactive(framework))
+    // console.log(isReactive(framework.name))
+
+    watch([doubleVersion, name], (newValues, oldValues) => {
+      console.log('new version', newValues[0])
+      console.log('new name', newValues[1])
+      console.log('old version', oldValues[0])
+      console.log('old name', oldValues[1])
+    })
 
     function changeInfo() {
       //Для reactive value не нужен
@@ -66,6 +81,11 @@ export default {
   // computed: {
   //   doubleVersion() {
   //     return this.version * 2
+  //   }
+  // }
+  // watch: {
+  //   doubleVersion(newValue) {
+  //
   //   }
   // }
 }
